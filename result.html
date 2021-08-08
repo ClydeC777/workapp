@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- <style>
+        table {
+            padding: 10px;
+            background: #666;
+            /* gray */
+        }
+
+        td {
+            padding: 5px 10px;
+            background: #fcc;
+            /* pink */
+            border: 3px solid #fff;
+            /* white */
+        }
+    </style> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">App Clyde</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="result.html"> Done list <span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+<br>
+<br>
+<div class="container">
+    <H2>Done datetime </H2>
+    <br>
+
+        <table id="table"  class="table"></table>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+        integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+    <script type="text/javascript">
+        var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vShjCp_IQns6IPovzDz78ruJyv0eboVVu9yoNxT0nP4YV1sDL7wEsYMi-eLVo6WtXf3CwLM90nc8jkj/pub?output=csv';
+
+        function init() {
+            Papa.parse(public_spreadsheet_url, {
+                download: true,
+                header: true,
+                complete: showInfo
+            })
+        }
+
+        window.addEventListener('DOMContentLoaded', init)
+
+
+        function showInfo(results) {
+            var html = "<tr>";
+            var data = results.data;
+            console.log(data);
+            var data = data.filter(function (el, index) {
+                return index >= data.length - 10;
+            });
+            console.log(data);
+
+            for (i = 0; i < data.length; i++) {
+                for (prop in data[i]) {
+                    html += "<td>" + data[i][prop] + "</td>";
+                }
+                html += "</tr><tr>";
+            }
+            document.getElementById("table").innerHTML = html;
+        }
+
+
+    </script>
+
+
+</body>
+
+
+
+</html>
